@@ -1,0 +1,11 @@
+prompt=
+show=drun
+height=30%
+width=25%
+term=kitty
+image_size=24
+insensitive=true
+allow_images=true
+allow_markup=true
+no_actions=true
+hide_scroll=true

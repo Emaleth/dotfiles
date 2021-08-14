@@ -1,0 +1,51 @@
+{
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["custom/clock"],
+    "modules-right": ["tray", "pulseaudio", "network", "battery"],
+
+    // Modules configuration
+    "sway/workspaces": {
+         "disable-scroll": true,
+         "all-outputs": true,
+         "format": "{name}  {icon}",
+         "format-icons": {
+             "urgent": "!",
+             "focused": "*",
+             "default": ""
+         }
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+    "custom/clock": {
+        "exec": "date '+%Y-%m-%d %H:%M'",
+        "interval": 5
+    },
+    "clock": {
+        "timezone": "Europe/Rome",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery": {
+        "format": " {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": " {time}"
+    },
+    "network": {
+        "format-wifi": " {signalStrength}%",
+        "format-ethernet": " ",
+        "format-disconnected": "睊 ",
+        "format-alt": "{essid}"
+    },
+    "pulseaudio": {
+        "format": "墳 {volume}%",
+        "format-muted": "婢 ",
+        "format-bluetooth": " {volume}%",
+        "format-bluetooth-muted": " "
+        },
+        "on-click": "pavucontrol"
+    }
+}
+
