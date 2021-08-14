@@ -2,8 +2,8 @@
     editor = nvim
 
 [user]
-	name = Emaleth
-	email = Emaleth@protonmail.com
+    name = Emaleth
+    email = Emaleth@protonmail.com
 
 [color]
     diff = auto
@@ -16,5 +16,5 @@
     decorate = full
 
 [init]
- 	defaultBranch = main
+    defaultBranch = main
 
