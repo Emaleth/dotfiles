@@ -1,5 +1,20 @@
+[core]
+    editor = nvim
+
 [user]
 	name = Emaleth
 	email = Emaleth@protonmail.com
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+    interactive = auto
+
+[log]
+    decorate = full
+
 [init]
-	defaultBranch = main
+ 	defaultBranch = main
+

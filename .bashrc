@@ -117,6 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 export PATH=”$HOME/.cargo/bin:$PATH”
 export EDITOR='vim'
 export VISUAL='vim'
@@ -131,4 +132,3 @@ then
 fi
 
 
-alias config='/usr/bin/git --git-dir=/home/emaleth/.cfg/ --work-tree=/home/emaleth'
