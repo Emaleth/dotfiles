@@ -6,7 +6,7 @@ set $down			j
 set $up				k
 set $right			l
 set $term			kitty --single-instance
-set $menu			exec wofi 
+set $menu			killall wofi || wofi
 
 include /etc/sway/config-vars.d/*
 
@@ -36,10 +36,6 @@ exec swayidle -w \
 	before-sleep 'sh ~/.config/swaylock/blurred_lock_screen'
 
 ### Aesthetics ###
-
-# gaps:
-# gaps inner 4
-# outer gaps add space on top of inner ones
 
 # borders:
 default_border pixel 2

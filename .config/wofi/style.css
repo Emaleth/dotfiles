@@ -35,6 +35,7 @@ window {
 #input {
   margin: 2px;
   border: 2px solid @bg4_color;
+  border-radius: 0;
   background-color: @bg0_color;
 }
 

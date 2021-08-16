@@ -1,51 +1,104 @@
-{
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["custom/clock"],
-    "modules-right": ["tray", "pulseaudio", "network", "battery"],
+// -*- mode: json -*-
 
-    // Modules configuration
-    "sway/workspaces": {
-         "disable-scroll": true,
-         "all-outputs": true,
-         "format": "{name}  {icon}",
-         "format-icons": {
-             "urgent": "!",
-             "focused": "*",
-             "default": ""
-         }
-    },
-    "tray": {
-        "icon-size": 14,
-        "spacing": 10
-    },
-    "custom/clock": {
-        "exec": "date '+%Y-%m-%d %H:%M'",
-        "interval": 5
-    },
-    "clock": {
-        "timezone": "Europe/Rome",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
-    "battery": {
-        "format": " {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": " {time}"
-    },
-    "network": {
-        "format-wifi": " {signalStrength}%",
-        "format-ethernet": " ",
-        "format-disconnected": "睊 ",
-        "format-alt": "{essid}"
-    },
-    "pulseaudio": {
-        "format": "墳 {volume}%",
-        "format-muted": "婢 ",
-        "format-bluetooth": " {volume}%",
-        "format-bluetooth-muted": " "
-        },
-        "on-click": "pavucontrol"
-    }
+{
+	"modules-left": [
+		"sway/workspaces",
+		"custom/right-arrow-dark"
+	],
+	"modules-center": [
+		"custom/left-arrow-dark",
+		"custom/clocka",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"custom/clockb",
+		"custom/right-arrow-dark",
+		"custom/right-arrow-light",
+		"custom/clockc",
+		"custom/right-arrow-dark"
+	],
+	"modules-right": [
+		"custom/left-arrow-dark",
+		"tray",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"pulseaudio",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
+		"battery"
+	],
+
+	"custom/left-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/left-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-dark": {
+		"format": "",
+		"tooltip": false
+	},
+	"custom/right-arrow-light": {
+		"format": "",
+		"tooltip": false
+	},
+
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"format": "{name}"
+	},
+
+	"custom/clocka": {
+		//"format": "{:%a}",
+		"exec": "date '+%a'",
+        "interval": 5,
+		"tooltip": false
+	},
+	"custom/clockb": {
+		//"format": "{:%H:%M}",
+		"exec": "date '+%H:%M'",
+        "interval": 5,
+		"tooltip": false
+	},
+	"custom/clockc": {
+		//"format": "{:%m-%d}",
+		"exec": "date '+%m-%d'",
+        "interval": 5,
+		"tooltip": false
+	},
+	"tray": {
+		"icon-size": 20
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "MUTE",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon} {capacity}%",
+		"format-icons": [
+			" ",
+			" ",
+			" ",
+			" ",
+			" "
+		]
+	}
 }
 

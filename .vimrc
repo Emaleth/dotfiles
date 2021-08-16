@@ -10,7 +10,7 @@ filetype plugin on
 " Load an indent file for the detected file type.
 filetype indent on
 
- " Turn syntax highlighting on.
+" Turn syntax highlighting on.
 syntax on  
 
 " Add numbers to each line on the left-hand side.
@@ -18,9 +18,8 @@ set number
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
-
-" Highlight cursor line underneath the cursor vertically.
-set cursorcolumn
+highlight clear CursorLine
+highlight CursorLineNR ctermbg=red
 
 " Set shift width to 4 spaces.
 set shiftwidth=4
@@ -28,17 +27,12 @@ set shiftwidth=4
 " Set tab width to 4 columns.
 set tabstop=4
 
-" Use space characters instead of tabs.
-set expandtab
-
 " Do not save backup files.
+set writebackup
 set nobackup
 
 " Do not let cursor scroll below or above N number of lines when scrolling.
 set scrolloff=10
-
-" Do not wrap lines. Allow long lines to extend as far as the line goes.
-set nowrap
 
 " While searching though a file incrementally highlight matching characters as you type.
 set incsearch
@@ -116,45 +110,6 @@ augroup cursor_off
     autocmd WinEnter * set cursorline cursorcolumn
 augroup END
 
-" If GUI version of Vim is running set these options.
-if has('gui_running')
-
-    " Set the background tone.
-    set background=dark
-
-    " Set the color scheme.
-    colorscheme srcery
-
-    " Set a custom font you have installed on your computer.
-    " Syntax: set guifont=<font_name>\ <font_weight>\ <size>
-    set guifont=Monospace\ Regular\ 12
-
-    " Display more of the file by default.
-    " Hide the toolbar.
-    set guioptions-=T
-
-    " Hide the the left-side scroll bar.
-    set guioptions-=L
-
-    " Hide the the right-side scroll bar.
-    set guioptions-=r
-
-    " Hide the the menu bar.
-    set guioptions-=m
-
-    " Hide the the bottom scroll bar.
-    set guioptions-=b
-
-    " Map the F4 key to toggle the menu, toolbar, and scroll bar.
-    " <Bar> is the pipe character.
-    " <CR> is the enter key.
-    nnoremap <F4> :if &guioptions=~#'mTr'<Bar>
-        \set guioptions-=mTr<Bar>
-        \else<Bar>
-        \set guioptions+=mTr<Bar>
-        \endif<CR>
-
-endif
 
 " }}}
 
