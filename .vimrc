@@ -1,32 +1,63 @@
-" Disable compatibility with vi which can cause unexpected issues.
+" ############################################################
+"
+" ███████╗███╗░░░███╗░█████╗░██╗░░░░░███████╗████████╗██╗░░██╗
+" ██╔════╝████╗░████║██╔══██╗██║░░░░░██╔════╝╚══██╔══╝██║░░██║
+" █████╗░░██╔████╔██║███████║██║░░░░░█████╗░░░░░██║░░░███████║
+" ██╔══╝░░██║╚██╔╝██║██╔══██║██║░░░░░██╔══╝░░░░░██║░░░██╔══██║
+" ███████╗██║░╚═╝░██║██║░░██║███████╗███████╗░░░██║░░░██║░░██║
+" ╚══════╝╚═╝░░░░░╚═╝╚═╝░░╚═╝╚══════╝╚══════╝░░░╚═╝░░░╚═╝░░╚═╝ 
+"  
+" ############################################################
+" Slowly making Vim my own, for time being my be chaotic and 
+" messy, will fix later. Maybe. Less plug-ins the better,
+" ideally only plug-ins providing new and needed functionality
+" (ok i given up on NERDTree and Lightline), like vimwiki 
+" for example. Only acceptable exception are colorschemes 
+" (sure...). Plugins are cloned directly from git, inside 
+" '.vim/pack/plugins/start/[plugin_folder]'.
+" ############################################################
+
+" GENERAL ---------------------------------------------------------------- {{{
+
+" Vi compatibility [R!]
 set nocompatible
 
-" Enable type file detection. Vim will be able to try to detect the type of file in use.
+" encoding
+set encoding=UTF-8
+
+" detect filetypes
 filetype on
 
-" Enable plugins and load plugin for the detected file type.
+" check spelling
+set spell
+
+" enable plugins
 filetype plugin on
 
-" Load an indent file for the detected file type.
+" load indentation files ???
 filetype indent on
 
-" Turn syntax highlighting on.
+" syntax highlight
 syntax on  
 
-" Add numbers to each line on the left-hand side.
+" line numbers
 set number
 
-" Highlight cursor line underneath the cursor horizontally.
+" Enable horizontal highlight
 set cursorline
-highlight clear CursorLine
-highlight CursorLineNR ctermbg=red
 
+" Disable vertical highlight
+set nocursorcolumn
+
+set expandtab
+set smarttab
 " Set shift width to 4 spaces.
 set shiftwidth=4
 
 " Set tab width to 4 columns.
 set tabstop=4
 
+set clipboard=unnamedplus       " Copy/paste between vim and other programs.
 " Do not save backup files.
 set writebackup
 set nobackup
@@ -48,7 +79,7 @@ set smartcase
 set showcmd
 
 " Show the mode you are on the last line.
-set showmode
+" set showmode
 
 " Show matching words during a search.
 set showmatch
@@ -59,27 +90,52 @@ set hlsearch
 " Set the commands to save in history default number is 20.
 set history=1000
 
-" Enable auto completion menu after pressing TAB.
+" Wildmenu
 set wildmenu
-
-" Make wildmenu behave like similar to Bash completion.
 set wildmode=list:longest
-
-" There are certain files that we would never want to edit with Vim.
-" Wildmenu will ignore files with these extensions.
-set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
-
-" PLUGINS ---------------------------------------------------------------- {{{
-
-" Plugin code goes here.
+set laststatus=2
+set noshowmode
 
 " }}}
 
 
-" MAPPINGS --------------------------------------------------------------- {{{
+" COLORS ---------------------------------------------------------------- {{{
 
-" Mappings code goes here.
+" Colorcheme 
+colorscheme srcery
 
+" }}}
+
+
+" MAPPING ---------------------------------------------------------------- {{{
+
+
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+
+" }}}
+
+
+" PLUGINS ---------------------------------------------------------------- {{{
+
+" <NERDTree>
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+let g:NERDTreeWinSize=20
+let NERDTreeShowHidden=1
+" <Lightline>
+let g:lightline = {
+      \ 'colorscheme': 'srcery',
+      \ }
+
+" <Coc>
+ 
 " }}}
 
 
@@ -107,28 +163,7 @@ endif
 augroup cursor_off
     autocmd!
     autocmd WinLeave * set nocursorline nocursorcolumn
-    autocmd WinEnter * set cursorline cursorcolumn
+    autocmd WinEnter * set cursorline nocursorcolumn
 augroup END
-
-
-" }}}
-
-
-" STATUS LINE ------------------------------------------------------------ {{{
-
-" Clear status line when vimrc is reloaded.
-set statusline=
-
-" Status line left side.
-set statusline+=\ %F\ %M\ %Y\ %R
-
-" Use a divider to separate the left side from the right side.
-set statusline+=%=
-
-" Status line right side.
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-
-" Show the status on the second to last line.
-set laststatus=2
 
 " }}}
