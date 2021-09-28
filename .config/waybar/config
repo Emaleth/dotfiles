@@ -1,75 +1,79 @@
 // -*- mode: json -*-
 
 {
+//    "position": "bottom",
 	"modules-left": [
-		"sway/workspaces",
-		"custom/right-arrow-dark"
+		"sway/workspaces"
 	],
 	"modules-center": [
-		"custom/left-arrow-dark",
-		"custom/clocka",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"custom/clockb",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
-		"custom/clockc",
-		"custom/right-arrow-dark"
+		"custom/day",
+		"custom/time",
+		"custom/date"
 	],
 	"modules-right": [
-		"custom/left-arrow-dark",
 		"tray",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
 		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"battery"
+		"network",
+		"battery",
+        "custom/power"
 	],
-
-	"custom/left-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
 
 	"sway/workspaces": {
 		"disable-scroll": true,
-		"format": "{name}"
+        "format-icons": {
+            "1": "⋄",
+            "2": "⋄",
+            "3": "⋄",
+            "4": "⋄",
+            "5": "⋄",
+            "6": "⋄",
+            "7": "⋄",
+            "8": "⋄",
+            "9": "⋄",
+            "10": "⋄"           
+        },
+        "format": "{icon}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        }
 	},
-
-	"custom/clocka": {
+	"custom/day": {
 		//"format": "{:%a}",
 		"exec": "date '+%a'",
         "interval": 5,
 		"tooltip": false
 	},
-	"custom/clockb": {
-		//"format": "{:%H:%M}",
-		"exec": "date '+%H:%M'",
+	"custom/time": {
+		//"format": "{:%R}",
+		"exec": "date '+%R'",
         "interval": 5,
 		"tooltip": false
 	},
-	"custom/clockc": {
-		//"format": "{:%m-%d}",
-		"exec": "date '+%m-%d'",
+	"custom/date": {
+		//"format": "{:%d/%m}",
+		"exec": "date '+%d/%m'",
         "interval": 5,
 		"tooltip": false
 	},
 	"tray": {
-		"icon-size": 20
+		"icon-size": 20,
+        "spacing": 8
 	},
+	"network": {
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "ETH",
+        "format-disconnected": "OFLN",
+		"tooltip": false
+    },
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}%",
@@ -82,8 +86,8 @@
 			]
 		},
 		"scroll-step": 5,
-		"on-click": "pamixer -t",
-		"on-click-right": "pavucontrol"
+		"on-click": "pavucontrol",
+		"tooltip": false
 	},
 	"battery": {
 		"states": {
@@ -99,6 +103,11 @@
 			" ",
 			" "
 		]
-	}
+	},
+    "custom/power": {
+		"format": " ",
+		"on-click": "sh ~/Documents/wofi-power-menu",	
+		"tooltip": false
+    }
 }
 

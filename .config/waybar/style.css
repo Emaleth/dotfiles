@@ -1,65 +1,55 @@
-* {
-	font-size: 14px;
-	font-family: Ubuntu Mono Nerd Font;
-}
+/* Emaleth's Waybar Style.css */
 
+/*
+*
+* Base16 Default Dark
+* Author: Chris Kempson (http://chriskempson.com)
+*
+*/
+
+@define-color base00 #181818;
+@define-color base01 #282828;
+@define-color base02 #383838;
+@define-color base03 #585858;
+@define-color base04 #b8b8b8;
+@define-color base05 #d8d8d8;
+@define-color base06 #e8e8e8;
+@define-color base07 #f8f8f8;
+@define-color base08 #ab4642;
+@define-color base09 #dc9656;
+@define-color base0A #f7ca88;
+@define-color base0B #a1b56c;
+@define-color base0C #86c1b9;
+@define-color base0D #7cafc2;
+@define-color base0E #ba8baf;
+@define-color base0F #a16946;
+
+/* STYLE */
 window#waybar {
-	background: #292b2e;
-	color: #fdf6e3;
-}
-
-#custom-right-arrow-dark,
-#custom-left-arrow-dark {
-	color: #1a1a1a;
-	font-size: 25px;
-}
-#custom-right-arrow-light,
-#custom-left-arrow-light {
-	color: #292b2e;
-	background: #1a1a1a;
-	font-size: 25px;
+	font-family: Ubuntu Mono Nerd Font;
+	font-size: 14px;
+	background: @base00;
+	color: @base05;
 }
 
 #workspaces,
-#custom-clocka,
-#custom-clockb,
-#custom-clockc,
+#custom-day,
+#custom-time,
+#custom-date,
+#network,
 #pulseaudio,
 #battery,
-#tray {
-	background: #1a1a1a;
+#tray,
+#custom-power {
+	padding: 0 8px;
 }
 
 #workspaces button {
 	padding: 0 2px;
-	color: #fdf6e3;
+	color: @base05;
 }
+
 #workspaces button.focused {
-	color: #268bd2;
-}
-#workspaces button:hover {
-	box-shadow: inherit;
-	text-shadow: inherit;
-}
-#workspaces button:hover {
-	background: #1a1a1a;
-	border: #1a1a1a;
-	padding: 0 4px;
-}
-
-#pulseaudio {
-	color: #268bd2;
-}
-#battery {
-	color: #859900;
-}
-
-#custom-clocka,
-#custom-clockb,
-#custom-clockc,
-#pulseaudio,
-#battery, 
-#tray {
-	padding: 0 4px;
+	color: @base08;
 }
 

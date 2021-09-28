@@ -102,7 +102,7 @@ set noshowmode
 " COLORS ---------------------------------------------------------------- {{{
 
 " Colorcheme 
-colorscheme srcery
+colorscheme base16-default-dark
 
 " }}}
 
@@ -129,12 +129,7 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 let g:NERDTreeWinSize=20
 let NERDTreeShowHidden=1
-" <Lightline>
-let g:lightline = {
-      \ 'colorscheme': 'srcery',
-      \ }
 
-" <Coc>
  
 " }}}
 

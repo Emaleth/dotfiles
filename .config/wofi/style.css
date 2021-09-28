@@ -1,57 +1,57 @@
-@define-color red_color #cc241d;
-@define-color red2_color #fb4934;
-@define-color green_color #98971a;
-@define-color green2_color #d8bb26;
-@define-color yellow_color #d79921;
-@define-color yellow2_color #fabd2f;
-@define-color blue_color #458588;
-@define-color blue2_color #83a598;
-@define-color purple_color #b16286;
-@define-color purple2_color #d3869b;
-@define-color aqua_color #689d6a;
-@define-color aqua2_color #8ec07c;
-@define-color gray_color #a89984;
-@define-color gray2_color #928374;
-@define-color orange_color #d65d0e;
-@define-color orange2_color #fe8019;
+/*
+*
+* Base16 Default Dark
+* Author: Chris Kempson (http://chriskempson.com)
+*
+*/
 
-@define-color bg0_color #282828;
-@define-color bg1_color #3c3836;
-@define-color bg2_color #504945;
-@define-color bg3_color #665c54;
-@define-color bg4_color #7c6f64;
-@define-color bg0_h_color #1d2021;
+@define-color base00 #181818;
+@define-color base01 #282828;
+@define-color base02 #383838;
+@define-color base03 #585858;
+@define-color base04 #b8b8b8;
+@define-color base05 #d8d8d8;
+@define-color base06 #e8e8e8;
+@define-color base07 #f8f8f8;
+@define-color base08 #ab4642;
+@define-color base09 #dc9656;
+@define-color base0A #f7ca88;
+@define-color base0B #a1b56c;
+@define-color base0C #86c1b9;
+@define-color base0D #7cafc2;
+@define-color base0E #ba8baf;
+@define-color base0F #a16946;
 
-@define-color fg_color #ebdbb2;
 * {
-  font: Ubuntu;
+  font-family: Ubuntu;
 }
 window {
-  margin: 2px;
-  border: 2px solid @blue_color;
-  background-color: @blue_color;
+  border: none;
 }
 
 #input {
-  margin: 2px;
-  border: 2px solid @bg4_color;
+  border-bottom: 2px solid @base00;
   border-radius: 0;
-  background-color: @bg0_color;
+  background-color: @base01;
+  color: @base05;
+  box-shadow: none;
+}
+
+#input image:first-child {
+	margin-left: -100px;
+}
+
+#input image:last-child {
+	margin-right: -100px;
 }
 
 #inner-box {
-  margin: 2px;
-  background-color: @bg0_color;
+  background-color: @base00;
 }
 
 #outer-box {
-  margin: 2px;
-  border: 2px solid @bg0_h_color;
-  background-color: @bg0_h_color;
-}
-
-.entry image {
-  margin-right: 10px;
+  border: 2px solid @base0D;
+  background-color: @base00;
 }
 
 #scroll {
@@ -59,6 +59,17 @@ window {
 }
 
 #text {
-  color: @fg_color;
+  color: @base05;
 } 
 
+#entry:selected {
+    background-color: @base02;
+    color: transparent;
+}
+#text:selected {
+	font-weight: bold; 
+	color: @base05;
+}
+#img {
+	padding-right: 8px;
+}
