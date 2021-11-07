@@ -8,7 +8,10 @@ set mouse=a
 let base16colorspace=256		
 
 " set colorscheme
-colorscheme base16-default-dark	
+try
+    colorscheme base16-default-dark
+catch
+endtry
 
 " allow system-wide clipboard
 set clipboard=unnamedplus				
