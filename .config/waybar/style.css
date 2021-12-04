@@ -1,35 +1,15 @@
 /* Emaleth's Waybar Style.css */
 
-/*
-*
-* Base16 Default Dark
-* Author: Chris Kempson (http://chriskempson.com)
-*
-*/
-
-@define-color base00 #181818;
-@define-color base01 #282828;
-@define-color base02 #383838;
-@define-color base03 #585858;
-@define-color base04 #b8b8b8;
-@define-color base05 #d8d8d8;
-@define-color base06 #e8e8e8;
-@define-color base07 #f8f8f8;
-@define-color base08 #ab4642;
-@define-color base09 #dc9656;
-@define-color base0A #f7ca88;
-@define-color base0B #a1b56c;
-@define-color base0C #86c1b9;
-@define-color base0D #7cafc2;
-@define-color base0E #ba8baf;
-@define-color base0F #a16946;
+@define-color bg			#181818;
+@define-color fg			#d8d8d8;
+@define-color accent	#ab4642;
 
 /* STYLE */
 window#waybar {
 	font-family: Ubuntu Mono Nerd Font;
 	font-size: 14px;
-	background: @base00;
-	color: @base05;
+	background: @bg;
+	color: @fg;
 }
 
 #workspaces,
@@ -39,17 +19,16 @@ window#waybar {
 #network,
 #pulseaudio,
 #battery,
-#tray,
-#custom-power {
+#tray {
 	padding: 0 8px;
 }
 
 #workspaces button {
 	padding: 0 2px;
-	color: @base05;
+	color: @fg;
 }
 
 #workspaces button.focused {
-	color: @base08;
+	color: @accent;
 }
 

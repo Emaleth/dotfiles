@@ -1,7 +1,4 @@
-// -*- mode: json -*-
-
 {
-//    "position": "bottom",
 	"modules-left": [
 		"sway/workspaces"
 	],
@@ -14,9 +11,9 @@
 		"tray",
 		"pulseaudio",
 		"network",
-		"battery",
-        "custom/power"
+		"battery"
 	],
+	
 
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -103,11 +100,6 @@
 			" ",
 			" "
 		]
-	},
-    "custom/power": {
-		"format": " ",
-		"on-click": "sh ~/Documents/wofi-power-menu",	
-		"tooltip": false
-    }
+	}
 }
 
