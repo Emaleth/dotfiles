@@ -1,26 +1,37 @@
-## Base
-
-default-timeout=5000
-font=Iosevka Nerd Font
-border-size=2
-icons=1
-max-icon-size=32
-
-## Base16 Default Dark
-# Author: Chris Kempson (http://chriskempson.com)
-#
-# You can use these variables anywhere in the mako configuration file.
-
-background-color=#181818
-text-color=#d8d8d8
-border-color=#7cafc2
-
 [urgency=low]
 background-color=#181818
-text-color=#f7ca88
-border-color=#7cafc2
+text-color=#d8d8d8
+border-color=#ab4642
+
+max-icon-size=32
+icons=1
+border-size=2
+font=Iosevka Nerd Font
+ignore-timeout=1
+default-timeout=5000
+
+
+[urgency=normal]
+background-color=#181818
+text-color=#d8d8d8
+border-color=#ab4642
+
+max-icon-size=32
+icons=1
+border-size=2
+font=Iosevka Nerd Font
+ignore-timeout=1
+default-timeout=5000
+
 
 [urgency=high]
 background-color=#181818
 text-color=#ab4642
-border-color=#7cafc2
+border-color=#ab4642
+
+max-icon-size=32
+icons=1
+border-size=2
+font=Iosevka Nerd Font
+ignore-timeout=1
+default-timeout=30000

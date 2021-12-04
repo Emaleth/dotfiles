@@ -4,7 +4,7 @@ set $mod			Mod4
 set $left			h
 set $down			j
 set $up				k
-set $right			l
+set $right		l
 set $term			kitty --single-instance
 set $menu			killall wofi || wofi
 
@@ -14,7 +14,6 @@ include /etc/sway/config-vars.d/*
 
 exec autotiling
 exec mako
-exec 'sh ~/.azotebg'
 exec /opt/Bitwarden-1.27.1-x86_64.AppImage
 
 # ssh-agent:
@@ -22,10 +21,9 @@ exec eval "$(/usr/bin/gnome-keyring-daemon --start)"
 exec export SSH_AUTH_SOCK	
 
 # waybar:
-# this way waybar reloads each time sway does
 bar {
 	swaybar_command waybar 
-	} 
+} 
 
 # lockscreen:
 exec swayidle -w \
@@ -35,65 +33,38 @@ exec swayidle -w \
 	before-sleep 'sh ~/.config/swaylock/blurred_lock_screen'
 
 ### Aesthetics ###
-
-# borders:
 default_border pixel 2
 default_floating_border pixel 2
 
 ### Appearance ###
-### srcery_kitty.conf
-### https://github.com/srcery-colors/srcery-terminal/
+# Set colors
+set $bg			#181818
+set $fg			#d8d8d8
+set $accent	#ab4642
 
-## Main Colors
-
-## Base16 Default Dark
-# Author: Chris Kempson (http://chriskempson.com)
-
-set $base00 #181818
-set $base01 #282828
-set $base02 #383838
-set $base03 #585858
-set $base04 #b8b8b8
-set $base05 #d8d8d8
-set $base06 #e8e8e8
-set $base07 #f8f8f8
-set $base08 #ab4642
-set $base09 #dc9656
-set $base0A #f7ca88
-set $base0B #a1b56c
-set $base0C #86c1b9
-set $base0D #7cafc2
-set $base0E #ba8baf
-set $base0F #a16946
-
-# Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $base0D $base00 $base0D $base0D
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+# class										border		background	text    indicator		child_border
+client.focused						$accent		$accent			$fg     $accent			$accent
+client.focused_inactive		$bg				$bg					$fg     $bg					$bg
+client.unfocused					$bg				$bg					$fg     $bg					$bg
+client.urgent							$accent		$accent			$fg     $accent			$accent
+client.placeholder				$accent		$accent			$fg     $accent			$accent
+client.background					$bg
 
 ### Input ###
 
-    input "type:keyboard" { 
-        xkb_layout it	
-	 	xkb_numlock enabled
-    }
+input "type:keyboard" { 
+  xkb_layout it	
+	xkb_numlock enabled
+}
 
-    input "type:touchpad" {
-        dwt enabled
-        tap enabled
-        natural_scroll enabled
-        middle_emulation enabled
-    }
+input "type:touchpad" {
+	dwt enabled
+  tap enabled
+  natural_scroll enabled
+  middle_emulation enabled
+}
 
 ### Key bindings ###
-
-# mako:
-bindsym $mod+n exec makoctl dismiss
-bindsym $mod+Shift+n exec makoctl dismiss -a
 
 # basic:
 bindsym $mod+Return exec $term
@@ -107,7 +78,7 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway
 bindsym Shift+print exec --no-startup-id slurp | grim -g - $(xdg-user-dir PICTURES)/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png') && notify-send Grim "screenshot taken" && paplay ~/Music/screen-capture.oga
 bindsym print exec --no-startup-id grim  $(xdg-user-dir PICTURES)/Screenshots/$(date +'screenshot_%Y-%m-%d-%H%M%S.png') && notify-send Grim "screenshot taken" && paplay ~/Music/screen-capture.oga
 
-# moving:
+# move focus:
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
@@ -116,6 +87,8 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+
+# move window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
@@ -125,7 +98,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# workspaces:
+# change workspace:
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -136,6 +109,8 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
+
+# move window to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -163,31 +138,10 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pa
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && paplay ~/Music/audio-volume-change.oga
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && paplay ~/Music/audio-volume-change.oga
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
     
 # scratchpad:
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-# resizing:
-mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+r mode "resize"
-
+# include something
 include /etc/sway/config.d/*
