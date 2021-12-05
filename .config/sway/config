@@ -25,6 +25,8 @@ bar {
 	swaybar_command waybar 
 } 
 
+output * bg /home/emaleth/Pictures/Wallpapers/wallhaven-pkwej3.jpg fill
+
 # lockscreen:
 exec swayidle -w \
 	timeout 300 'sh ~/.config/swaylock/blurred_lock_screen' \

@@ -11,37 +11,11 @@
 		"tray",
 		"pulseaudio",
 		"network",
-		"battery"
+		"battery",
+    "custom/power"
 	],
-	
-
 	"sway/workspaces": {
 		"disable-scroll": true,
-        "format-icons": {
-            "1": "⋄",
-            "2": "⋄",
-            "3": "⋄",
-            "4": "⋄",
-            "5": "⋄",
-            "6": "⋄",
-            "7": "⋄",
-            "8": "⋄",
-            "9": "⋄",
-            "10": "⋄"           
-        },
-        "format": "{icon}",
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": [],
-            "6": [],
-            "7": [],
-            "8": [],
-            "9": [],
-            "10": []
-        }
 	},
 	"custom/day": {
 		//"format": "{:%a}",
@@ -70,7 +44,7 @@
         "format-ethernet": "ETH",
         "format-disconnected": "OFLN",
 		"tooltip": false
-    },
+  },
 	"pulseaudio": {
 		"format": "{icon} {volume:2}%",
 		"format-bluetooth": "{icon}  {volume}%",
@@ -80,8 +54,8 @@
 			"default": [
 				"",
 				""
-			]
-		},
+		  ]
+	  },
 		"scroll-step": 5,
 		"on-click": "pavucontrol",
 		"tooltip": false
@@ -100,6 +74,11 @@
 			" ",
 			" "
 		]
-	}
+	},
+  "custom/power": {
+		"format": " ",
+		"on-click": "wlogout",	
+		"tooltip": false
+  }
 }
 

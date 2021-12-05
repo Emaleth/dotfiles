@@ -77,9 +77,9 @@ fi
 
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-export PATH=”$HOME/.cargo/bin:$PATH”
-export EDITOR='vim'
-export VISUAL='vim'
+export PATH+=”$HOME/.cargo/bin:$PATH”
+export EDITOR='nvim'
+export VISUAL='nvim'
 
 # START STARSHIP PROMPT (I CASE WE DONT WANT TO USE FISH SHELL)
 eval "$(starship init bash)"
@@ -91,3 +91,6 @@ then
 fi
 
 
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH+="$HOME/gems/bin:$HOME/.cargo/bin:$PATH"

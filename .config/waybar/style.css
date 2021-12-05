@@ -19,7 +19,8 @@ window#waybar {
 #network,
 #pulseaudio,
 #battery,
-#tray {
+#tray,
+#custom-power {
 	padding: 0 8px;
 }
 
