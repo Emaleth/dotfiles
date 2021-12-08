@@ -25,8 +25,10 @@ set nobackup                " disable backup file
 set nowritebackup           " disable backup writing
 set undodir=~/.vim/backup		" undofile dir
 set undofile								" alows undo even after writing
-set undoreload=10000				" 
-set scrolloff=10            " scrolloff
+set undoreload=10000				" 10k undo limit
+set scrolloff=10            " set scrolloff limit as 10 lines
+let &fcs='eob: '            " hide ~ at the end of the buffer
+
 
 " CUSTOM KEYMAPPING
 " move line or visually selected block - alt+j/k
@@ -45,8 +47,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lualine/lualine.nvim'
   " devicons for buffer line
   Plug 'kyazdani42/nvim-web-devicons'
-  " scrollbar
-  Plug 'Xuyuanp/scrollbar.nvim'
   " mkdir on sava
   Plug 'jghauser/mkdir.nvim'
   " dashboard
@@ -58,6 +58,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kyazdani42/nvim-tree.lua'
   " Built-in LSP
   Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
   " cmp
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -66,15 +67,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'hrsh7th/nvim-cmp'
 call plug#end()
 
-" PLUGINS CONFIG
-" ScrollBar
-augroup ScrollbarInit
-  autocmd!
-  autocmd WinScrolled,VimResized,QuitPre              * silent! lua require('scrollbar').show()
-  autocmd WinEnter,FocusGained                        * silent! lua require('scrollbar').show()
-  autocmd WinLeave,BufLeave,BufWinLeave,FocusLost     * silent! lua require('scrollbar').clear()
-augroup end
 
+" PLUGINS CONFIG
 " Lualine
 lua << END
 require'lualine'.setup()
@@ -104,6 +98,10 @@ set completeopt=menuone,noselect
 lua << END
 local cmp = require'cmp'
 local nvim_lsp = require'lspconfig'.pyright.setup {}
+local nvim_lsp = require'lspconfig'.sumneko_lua.setup {}
+local nvim_lsp = require'lspconfig'.cssls.setup {}
+local nvim_lsp = require'lspconfig'.html.setup {}
+local nvim_lsp = require'lspconfig'.jsonls.setup {}
 
 cmp.setup({
     sources = {
@@ -128,5 +126,5 @@ cmp.setup({
 })
 END
 
-hi Pmenu ctermfg=250 ctermbg=235 guifg=#bcbcbc guibg=#262626
-
+" may not be neccesay with different themes
+hi Pmenu ctermfg=250 ctermbg=235 guifg=#bcbcbc guibg=#262626 
