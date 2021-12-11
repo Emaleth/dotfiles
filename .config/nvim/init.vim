@@ -65,13 +65,18 @@ call plug#begin('~/.vim/plugged')
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
+  " TreeSitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+  " ayu colorscheme
+  Plug 'Shatur/neovim-ayu'
+
 call plug#end()
 
 
 " PLUGINS CONFIG
 " Lualine
 lua << END
-require'lualine'.setup()
+require'lualine'.setup {}
 END
 
 " Bufferline
@@ -79,6 +84,9 @@ set termguicolors
 lua << END
 require("bufferline").setup{}
 END
+
+" colorscheme
+colorscheme ayu
 
 " Dashboard
 let g:dashboard_default_executive ='fzf'
@@ -128,3 +136,18 @@ END
 
 " may not be neccesay with different themes
 hi Pmenu ctermfg=250 ctermbg=235 guifg=#bcbcbc guibg=#262626 
+
+" treesitter Config
+lua <<END
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"css", "gdscript" }, -- "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true
+  }
+}
+END
